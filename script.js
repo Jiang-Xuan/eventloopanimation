@@ -8,9 +8,9 @@
       const objKeys = Object.keys(obj)
 
       if (duration) {
-        el.style.transitionProperty = objKeys.join()
-        el.style.transitionTimingFunction = easing
-        el.style.transitionDuration = `${duration}s`
+        el.style.transitionProperty = objKeys.join() // transform, opacity, ...
+        el.style.transitionTimingFunction = easing // ease-in-out
+        el.style.transitionDuration = `${duration}s` // .2s
         el.offsetLeft
 
         el.addEventListener('transitionend', function te() {
@@ -25,7 +25,7 @@
       }
 
       objKeys.forEach((key) => {
-        el.style.setProperty(key, obj[key])
+        el.style.setProperty(key, obj[key]) // transform: translateY(0px)
       })
     })
   }
@@ -33,7 +33,7 @@
   function EventLoopAnimation(el) {
     this._initialState = el
     this._states = []
-    this._el = el;
+    this._el = el
     this._queue = Promise.resolve()
     this._reset()
   }
@@ -68,7 +68,6 @@
       } else if (className === 'next-btn') {
         event.preventDefault()
         if (event.type === 'click') {
-          // debugger
           this.forward(true)
         }
       }
@@ -86,11 +85,11 @@
       const state = this._states[this._currentPos]
       if (!state) return this.goTo(0)
       this._currentPos++
-        return Promise.all(
-          state.map(function(func) {
-            return func(animate)
-          })
-        )
+      return Promise.all(
+        state.map(function(func) {
+          return func(animate)
+        })
+      )
     })
   }
 
@@ -129,6 +128,7 @@
   }
 
   /**
+   * 添加一个 action
    * func { Function } 动作 function
    */
   EventLoopAnimation.prototype.action = function(func) {
@@ -336,13 +336,7 @@
   const oneEventLoopAnimation = new EventLoopAnimation(eventLoopWalkthrough)
 
   oneEventLoopAnimation
-    .state().hideCodeBar().moveToLine(1).showCodeBar()
-    .state().hideCodeBar().moveToLine(2).showCodeBar()
-    .state().hideCodeBar().moveToLine(3).showCodeBar()
-    .state().hideCodeBar().moveToLine(4).showCodeBar()
-    .state().hideCodeBar().moveToLine(5).showCodeBar()
-    .state().hideCodeBar().moveToLine(6).showCodeBar()
-    .state().hideCodeBar().moveToLine(7).showCodeBar()
-    .state().hideCodeBar().moveToLine(8).showCodeBar()
+    .state().moveToLine(3).showCodeBar()
 
+  window.oneEventLoopAnimation = oneEventLoopAnimation
 })()

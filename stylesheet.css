@@ -6,6 +6,7 @@
   src: url(https://themes.googleusercontent.com/static/fonts/inconsolata/v6/BjAYBlHtW3CJxDcjzrnZCCwlidHJgAgmTjOEEzwu1L8.ttf) format("truetype");
   font-display: optional;
 }
+
 * {
   box-sizing: border-box;
 }
@@ -30,6 +31,10 @@ body {
   max-height: 90vh;
   height: 493px;
   position: relative;
+}
+
+.event-loop-walkthrough tr {
+  border-top: 1px solid white;
 }
 
 .event-loop-walkthrough .codehilite {
