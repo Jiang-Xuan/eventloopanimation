@@ -1,0 +1,167 @@
+/* 自定义字体 */
+@font-face {
+  font-family: 'Inconsolata';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://themes.googleusercontent.com/static/fonts/inconsolata/v6/BjAYBlHtW3CJxDcjzrnZCCwlidHJgAgmTjOEEzwu1L8.ttf) format("truetype");
+  font-display: optional;
+}
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 15px;
+}
+
+body {
+  font-family: sans-serif;
+  padding: 0 45px;
+}
+
+.event-loop-walkthrough {
+  // margin: 0 -20px;
+  margin: auto;
+  overflow: hidden;
+  max-width: 710px;
+  background: #eee;
+  display: flex;
+  flex-flow: column;
+  max-height: 90vh;
+  height: 493px;
+  position: relative;
+}
+
+.event-loop-walkthrough .codehilite {
+  margin: 0;
+  padding: 0 12px;
+  position: relative;
+  top: 60px;
+  transform: translateY(-50px);
+}
+
+.event-loop-walkthrough table {
+  border-collapse: collapse;
+  width: 100%;
+  table-layout: fixed;
+}
+
+.js-source {
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+  background: #2D2D2D;
+}
+
+.event-loop-controls {
+  background: #ddd;
+  fill: #6d6d6d;
+  padding: 0.1rem;
+  height: 1.7rem;
+  border-top: 1px solid #FFF;
+}
+.event-loop-controls svg {
+  height: 100%;
+  display: block;
+  margin-right: 0;
+  margin-left: auto;
+}
+
+.event-loop-walkthrough .prev-btn, .event-loop-walkthrough .next-btn {
+  fill: rgba(0, 0, 0, 0);
+  cursor: pointer;
+}
+
+.event-loop-item {
+  background: #ddd;
+  margin: 5px;
+  padding: 5px;
+  margin-left: 0;
+  opacity: 0;
+  white-space: nowrap;
+}
+
+.task-queue th,
+.microtask-queue th,
+.js-stack th,
+.event-loop-log th {
+  font-weight: normal;
+  text-align: left;
+  padding: 10px 5px;
+  background: #ddd;
+  vertical-align: top;
+  width: 5.1rem;
+}
+
+.event-loop-walkthrough td {
+  padding: 0;
+}
+
+.event-loop-items {
+  display: flex;
+  overflow: hidden;
+  padding-left: 5px;
+}
+
+.event-loop-rail {
+  position: relative;
+  display: flex;
+}
+
+.codehilite {
+  background: #2d2d2d;
+  color: #e4e4e4;
+  margin: 0;
+  padding: 16px 20px;
+  line-height: 1.4;
+  font-size: 1rem;
+  overflow: auto;
+}
+.codehilite pre {
+  font-family: Inconsolata, courier, monospace;
+  margin: 0;
+  display: inline-block;
+  padding-right: 16px;
+  font-size: 1.1rem;
+}
+
+/* Literal.Number.Integer.Long */
+.js-source .line-highlight {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 60px;
+  background: rgba(255, 255, 255, 0.2);
+  z-index: 1;
+  opacity: 0;
+  line-height: 1.4;
+  font-size: 1rem;
+  font-family: Inconsolata, monospace;
+}
+.js-source .line-highlight::before {
+  content: '.Hello';
+  color: transparent;
+  font-size: 1.1rem;
+}
+
+.event-loop-commentary {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  z-index: 999;
+  pointer-events: none;
+}
+
+.event-loop-commentary-item {
+  padding: .8rem 1.2rem;
+  font-size: 1.7rem;
+  background-color: rgba(0, 0, 0, .77);
+  border-radius: 7px;
+  opacity: 0;
+}

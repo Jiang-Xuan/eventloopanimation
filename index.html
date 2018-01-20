@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>EventLoopAnimation</title>
+    <link rel="stylesheet" href="./stylesheet.css">
+    <link rel="stylesheet" href="./codehighlight.css">
+</head>
+
+<body>
+    <div class="event-loop-walkthrough event-loop-walkthrough-1">
+        <div class="js-source">
+            <div class="line-highlight"></div>
+            <div class="codehilite">
+                <pre><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'script start'</span><span class="p">);</span>
+
+  <span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'setTimeout'</span><span class="p">);</span>
+  <span class="p">},</span> <span class="mi">0</span><span class="p">);</span>
+
+  <span class="nx">Promise</span><span class="p">.</span><span class="nx">resolve</span><span class="p">().</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'promise1'</span><span class="p">);</span>
+  <span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'promise2'</span><span class="p">);</span>
+  <span class="p">});</span>
+
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'script end'</span><span class="p">);</span>
+  </pre>
+            </div>
+            <p></p>
+        </div>
+        <table>
+            <tbody>
+                <tr class="task-queue">
+                    <th>Tasks</th>
+                    <td>
+                        <div class="event-loop-items">
+                            <div class="event-loop-rail">
+                                <div class="event-loop-item">Run script</div>
+                                <div class="event-loop-item">setTimeout callback</div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="microtask-queue">
+                    <th>Microtasks</th>
+                    <td>
+                        <div class="event-loop-items">
+                            <div class="event-loop-rail">
+                                <div class="event-loop-item">Promise then</div>
+                                <div class="event-loop-item">Promise then</div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="js-stack">
+                    <th>JS stack</th>
+                    <td>
+                        <div class="event-loop-items"></div>
+                    </td>
+                </tr>
+                <tr class="event-loop-log">
+                    <th>Log</th>
+                    <td>
+                        <div class="event-loop-items">
+                            <div class="event-loop-item">script start</div>
+                            <div class="event-loop-item">script end</div>
+                            <div class="event-loop-item">promise1</div>
+                            <div class="event-loop-item">promise2</div>
+                            <div class="event-loop-item">setTimeout</div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="event-loop-controls">
+            <svg viewBox="0 0 5 2">
+                <path d="M2,0 L2,2 L0,1 z"></path>
+                <path d="M3,0 L5,1 L3,2 z"></path>
+                <path class="prev-btn" d="M0,0 H2.5V2H0z"></path>
+                <path class="next-btn" d="M2.5,0 H5V2H2.5z"></path>
+            </svg>
+        </div>
+        <div class="event-loop-commentary">
+            <div class="event-loop-commentary-item"></div>
+        </div>
+    </div>
+    <script src="./script.js"></script>
+</body>
+</html>
